@@ -28,20 +28,22 @@ def hashtag(search):
         print (tweet.text)
 
     # Accepts username and prints tweets from them #
-tweetcount = 10
-user = input("Enter user:")
-my_user=api.get_user(user)
-print('Name:' + user)
-print()
-print('Number of Followers:')
-print(my_user.followers_count)
+def usr(user):
+    tweetcount = 10
+    user = input("Enter user:")
+    my_user=api.get_user(user)
+    print('Name:' + user)
+    print()
+    print('Number of Followers:')
+    print(my_user.followers_count)
+    print()
+    results_2 = api.user_timeline(id=user,count=tweetcount)
+    print("Recent tweets:")
+    for tweet in results_2:
+        print(tweet.text)
+    print()
 
-print()
-results_2 = api.user_timeline(id=user,count=tweetcount)
-print("Recent tweets:")
-for tweet in results_2:
-    print(tweet.text)
-print()
+
 # Calls hashtag function to search input #
 query = input("Enter hashtag or keyword:")
 
