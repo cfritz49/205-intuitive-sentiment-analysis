@@ -30,7 +30,6 @@ def hashtag(search):
     # Accepts username and prints tweets from them #
 def usr(user):
     tweetcount = 10
-    user = input("Enter user:")
     my_user=api.get_user(user)
     print('Name:' + user)
     print()
@@ -43,8 +42,11 @@ def usr(user):
         print(tweet.text)
     print()
 
-
+# Calls usr function to search user w/ number of followers & tweets #
+user = input("Enter user:")
+usr(user)
 # Calls hashtag function to search input #
 query = input("Enter hashtag or keyword:")
+
 
 hashtag(query)
