@@ -19,49 +19,24 @@ def vader_analyze(twitter_input):
     com = []
     for tweet in twitter_input:
         a_tweet = analyzer.polarity_scores(tweet)
-        print(a_tweet)
         pos.append(a_tweet['pos'])
         neg.append(a_tweet['neg'])
         neu.append(a_tweet['neu'])
         com.append(a_tweet['compound'])
 
-    print(neg)
-    print(neu)
-    print(pos)
-
     mpos = sum(pos) / float(len(pos))
     mneu = sum(neu) / float(len(neu))
     mneg = sum(neg) / float(len(neg))
 
-    print(mpos, mneu, mneg)
+    labels = ['Positive', 'Neutral', 'Negative']
+    values = [mpos, mneu, mneg]
+    trace = Pie(labels=labels, values=values)
+    data = [Histogram(x=com)]
 
-    trace0 = Bar(
-        x=['1', '2', '3', '4'],
-        y=neg,
-        text=['neg', 'neg', 'neg', 'neg']
-    )
-    trace1 = Bar(
-        x=['1', '2', '3', '4'],
-        y=neu,
-        text=['neu', 'neu', 'neu', 'neu']
-    )
-    trace2 = Bar(
-        x=['1', '2', '3', '4'],
-        y=pos,
-        text=['pos', 'pos', 'pos', 'pos']
-    )
-    # trace3 = Pie(
-    #     labels=['pos', 'neu', 'neg'],
-    #     values=[mpos, mneu, mneg],
-    #     colors=['#FEBFB3', '#E1396C', '#96D38C']
-    # )
+    divs = (plotly.offline.plot([trace], include_plotlyjs=False, output_type='div'),
+            plotly.offline.plot(data, include_plotlyjs=False, output_type='div'))
 
-    data = [trace0, trace1, trace2]
-    layout = Layout(
-        barmode='stack'
-    )
-    fig = Figure(data=data, layout=layout)
-    return plotly.offline.plot(fig, include_plotlyjs=False, output_type='div')
+    return divs
 
 
 print(vader_analyze(['positive', 'negative', 'neutral']))
