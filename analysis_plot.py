@@ -1,12 +1,15 @@
 """
 CST 205-01
 
-Intuitive Sentiment Analysis - Analyzing and displaying positive, neutral, and negative sentiment of tweets
+Intuitive Sentiment Analysis - Using tweepy, Flask, VADER and Plot.ly to intuitively visualize social media sentiment
+analysis from Twitter
+
+Github link: https://github.com/cfritz49/205-intuitive-sentiment-analysis
 
 By Connor Fritz, Jorge Lopez, and Matthew Connolly
 
 This file takes in the list of tweets from the twitter search and analyzes them with VADER. It then uses the analysis
-data to generate a histogram of compoun d scores and a pie chart of average sentiment.
+data to generate a histogram of compound scores and a pie chart of average sentiment.
 
 All work on this file by Connor Fritz
 """
