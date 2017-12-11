@@ -49,8 +49,8 @@
 	  </div>
 	
 	<div class ="searchbar" style="text-align: center" action="/graph">
-		<form action="/graph" method="post">
-		<input type="text" class = "srchBar" name = "twitHash" placeholder = "Enter a Hashtag">
+		<form action="{{ url_for('graphs', search='my_search') }}" method="post">
+		<input type="text" class = "srchBar" name = "twitHash" placeholder = "Enter a Hashtag" value="{{search}}">
 		<input type="submit" name="form" value="Search!" class = "click"></input>
 	</form>
 	</div>

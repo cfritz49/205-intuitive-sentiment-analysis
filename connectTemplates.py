@@ -27,7 +27,6 @@ Bootstrap(app)
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/index', methods=['GET','POST'])
-
 def index():
     search = ""
     result = []
@@ -36,20 +35,16 @@ def index():
     histo = ''
     if request.method == 'POST':   
         search = request.form['twitHash']
-        
-        # vader = analysis_plot.vader_analyze(result)
-        # pichart = vader[0]
-        # histo = vader[1]
-
-
-    return render_template('index.html')
+    return render_template('index.html', search = search)
 
 #possible link to graph?
-@app.route('/graph', methods=['GET','POST'])
+@app.route('/graph/', methods=['GET','POST'])
 def graphs():
-    search = 'hello'
-    result = twit.hashtag(search)
-    vader = analysis_plot.vader_analyze(result)
-    pichart = vader[0]
-    histo = vader[1]
+    if request.method=='POST':
+        search = request.form['twitHash']
+        result = twit.hashtag(search)
+        vader = analysis_plot.vader_analyze(result)
+        pichart = vader[0]
+        histo = vader[1]
+
     return render_template('graph.html', search = search, result = result, vader = vader, pichart = pichart, histo = histo)

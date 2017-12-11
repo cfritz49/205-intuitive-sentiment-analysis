@@ -59,7 +59,7 @@ def hashtag(search):
 # user = input("Enter user:")
 # usr(user)
 # Calls hashtag function to search input #
-query = input("Enter hashtag or keyword:")
+# query = input("Enter hashtag or keyword:")
 
 
-print(hashtag(query))
+# print(hashtag(query))
