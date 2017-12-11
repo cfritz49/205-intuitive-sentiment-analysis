@@ -47,8 +47,8 @@ def vader_analyze(twitter_input):
     data = [Histogram(x=com)]
 
     # Creates Plot.ly graphs and stores them in tuple as strings. The graphs are saved as HTML divs
-    divs = (plotly.offline.plot([trace], include_plotlyjs=False, output_type='div'),    # Pie Chart
-            plotly.offline.plot(data, include_plotlyjs=False, output_type='div'))       # Histogram
+    divs = [plotly.offline.plot([trace], include_plotlyjs=False, output_type='div'),    # Pie Chart
+            plotly.offline.plot(data, include_plotlyjs=False, output_type='div')]      # Histogram
 
     return divs
 

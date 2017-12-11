@@ -9,11 +9,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-	
+	<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
 </head>
 <body>
 	{% block content %}
-
+	
 	<style>
 		body {
 			text-align: center;
@@ -49,28 +49,26 @@
 	  </div>
 	
 	<div class ="searchbar" style="text-align: center" action="/graph">
-		<form action="/" method="post">
+		<form action="/graph" method="post">
 		<input type="text" class = "srchBar" name = "twitHash" placeholder = "Enter a Hashtag">
-		<input type="submit" name="form" value="Submit" class = "click">Search!</button>
+		<input type="submit" name="form" value="Search!" class = "click"></input>
 	</form>
 	</div>
 	<br>
-	<div class = "output"></div>
+	<div class = "output">{{pichrt}}</div>
 	<br>
-	<div class = "twitterStuff"></div>
-
+	<div class = "twitterStuff">{{hist}}</div>
+	
+	
 
 	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript">
 		/* global $*/
+		var pichrt = '{{pichart}}';
+		var hist = '{{histo}}';
 		$(".click").click(function(){
-			console.log($(".srchBar").val())
-			var search = $(".srchBar").val()
-			output = "This is what you searched: " + "{{search}}";
-			//twitter = "Here is the twit info: " + "{{result}}";
-			$(".output").html(output);
-		//	$(".twitterStuff").html(twitter);
-
+			$(".output").html(pichrt);
+			$(".twitterStuff").html(hist);
 		})
 	</script>
 	<!-- <div style = "padding-left: 40px">
@@ -80,7 +78,9 @@
 			<img src="/static/{{image1}}.jpg" width="200" style = "border-radius: 5px">
 		</a><br/>
 		 -->
-	</div>
+	<!-- </div> -->
+
+	
 	{% endblock %}	
 
 </body>

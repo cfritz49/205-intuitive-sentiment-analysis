@@ -1,14 +1,59 @@
 {% extends "bootstrap/base.html" %}
 <!DOCTYPE html>
 <html>
+<head>
+	<title> 205 Final Project </title>
+	<meta charset="utf-8"/>
+	<!-- <h1>Search Twitter Tag</h1> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	
+</head>
 <body>
 	{% block content %}
-	<div style = "padding-left: 40px">
-		
+	
+	<style>
+		body {
+			text-align: center;
+		}
+		nav {
+			color:	rgb(255, 255, 255);
+			background-color: #04bbf3 !important;
+		}
+		.navbar{
+		  color: #04bbf3;
+		}
+	</style>
+
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #04bbf3; color:#ffffff">
+		<a class="navbar-brand" style="color: #ffffff">Group 1</a>
+		<!--<a class="navbar-brand" href="https://csumb.edu">Home</a>-->
+		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button> -->
+		<div id="navbarNavAltMarkup">
+		  <div class="navbar-nav" style="color:#ffffff; font-size: 18px; padding: 5pt; ">
+			<a class="nav-item nav-link active" href="/index" style="color: #ffffff;">Home <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="/graph" style="color: #ffffff; padding-left: 10pt;">Graph</a>
+			<!-- <a class="nav-item nav-link" href="login.php">Log in</a> -->
+		  </div>
+		</div>
+	  </nav>
+	  
+	  
+	  <div class="jumbotron" style="text-align: center">
+		<h1> Search Twitter Tag</h1>
+		<h2> CST 205 Final Project </h2>
+	  </div>
 	<!-- <h1>{{title}}</h1>
 	<img src="/static/{{bigImage}}.jpg" style = "border-radius: 5px">
 	<h3> {{info}} </h3> -->
-	
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<h1>{{search}}</h1>
+	<div>{{pichart | safe}}</div>
+	<div>{{histo|safe}}</div>
 	<br />
 	<br />
 	

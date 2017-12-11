@@ -1,10 +1,7 @@
 """
 CST 205-01
 
-Intuitive Sentiment Analysis - Using tweepy, Flask, VADER and Plot.ly to intuitively visualize social media sentiment
-analysis from Twitter
-
-Github link: https://github.com/cfritz49/205-intuitive-sentiment-analysis
+Intuitive Sentiment Analysis - Analyzing and displaying positive, neutral, and negative sentiment of tweets
 
 By Connor Fritz, Jorge Lopez, and Matthew Connolly
 
@@ -14,9 +11,8 @@ search query, calls the twitter search functions and analysis/plotting, and disp
 All work on this file by Matthew Connolly
 """
 
-# import test
-# import twitterstream
 import connection2twitter as twit
+import analysis_plot
 
 from flask import Flask, render_template, url_for, request, redirect
 from flask_bootstrap import Bootstrap
@@ -29,24 +25,31 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 Bootstrap(app)
 
-@app.route('/')
-@app.route('/index', methods=['POST'])
+@app.route('/', methods=['GET','POST'])
+@app.route('/index', methods=['GET','POST'])
 
 def index():
-    
-    search = request.form['twitHash']
-    #result = twit.hashtag(search)
-
-
-
-
-    return render_template('index.html', search = search)
-
-#possible link to graph?
-@app.route('/graph/')
-def graph(srch):
-
-
+    search = ""
+    result = []
+    vader = []
+    pichart = ''
+    histo = ''
+    if request.method == 'POST':   
+        search = request.form['twitHash']
+        
+        # vader = analysis_plot.vader_analyze(result)
+        # pichart = vader[0]
+        # histo = vader[1]
 
 
     return render_template('index.html')
+
+#possible link to graph?
+@app.route('/graph', methods=['GET','POST'])
+def graphs():
+    search = 'hello'
+    result = twit.hashtag(search)
+    vader = analysis_plot.vader_analyze(result)
+    pichart = vader[0]
+    histo = vader[1]
+    return render_template('graph.html', search = search, result = result, vader = vader, pichart = pichart, histo = histo)
