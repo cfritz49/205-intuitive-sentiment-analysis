@@ -1,7 +1,14 @@
-## Jorge Lopez
-## December 8, 2017
-## CST 205-01
-## Avner Biblarz
+"""
+CST 205-01
+
+Intuitive Sentiment Analysis - Analyzing and displaying positive, neutral, and negative sentiment of tweets
+
+By Connor Fritz, Jorge Lopez, and Matthew Connolly
+
+This file pulls information from twitter with tweepy. Information can be retrieved by user, hash tag, or keyword.
+
+All work on this file by Jorge Lopez
+"""
 
 import tweepy
 
