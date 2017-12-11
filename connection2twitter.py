@@ -28,38 +28,38 @@ api = tweepy.API(auth)
 def hashtag(search):
     tweetList = []
     for tweet in tweepy.Cursor(api.search, q = search,
+                                            count = 100,
+                                            result_type = "recent",
                                             include_entities=True,
-                                            lang="en").items(10):
+                                            lang="en").items(100):
 
         if (not tweet.retweeted) and ('RT @'not in tweet.text):
-            tweetList.append(tweet)
+            tweetList.append(tweet.text)
 
-    for tweet in tweetList:
-        # print(tweet.text)
-        return tweetList
+    return tweetList
 
 
-    # Accepts username and prints tweets from them #
-def usr(user):
-    tweetcount = 10
-    my_user=api.get_user(user)
-    print('Name:' + user)
-    print()
-    print('Number of Followers:')
-    print(my_user.followers_count)
-    print()
-    results_2 = api.user_timeline(id=user,count=tweetcount,full_text=True)
-    print("Recent tweets:")
-    for tweet in results_2:
-        if not tweet.retweeted:
-            print(tweet.text)
-    print()
-
-# Calls usr function to search user w/ number of followers & tweets #
-user = input("Enter user:")
-usr(user)
+#     # Accepts username and prints tweets from them #
+# def usr(user):
+#     tweetcount = 10
+#     my_user=api.get_user(user)
+#     print('Name:' + user)
+#     print()
+#     print('Number of Followers:')
+#     print(my_user.followers_count)
+#     print()
+#     results_2 = api.user_timeline(id=user,count=tweetcount,full_text=True)
+#     print("Recent tweets:")
+#     for tweet in results_2:
+#         if not tweet.retweeted:
+#             print(tweet.text)
+#     print()
+#
+# # Calls usr function to search user w/ number of followers & tweets #
+# user = input("Enter user:")
+# usr(user)
 # Calls hashtag function to search input #
 query = input("Enter hashtag or keyword:")
 
 
-hashtag(query)
+print(hashtag(query))
