@@ -32,7 +32,7 @@ def hashtag(search):
                                             include_entities=True,
                                             lang="en").items(10):
         # print ("entities:", tweet.entities['hashtags'])
-        print (tweet.text)
+        return tweet.text
 
     # Accepts username and prints tweets from them #
 
