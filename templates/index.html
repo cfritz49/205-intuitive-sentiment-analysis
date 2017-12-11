@@ -1,22 +1,27 @@
 {% extends "bootstrap/base.html" %}
+<!--HERE IS THE INDEX HTML FILE WHERE 
+IT DISPLAYS A SEARCH BAR WITH INFORMATION 
+ON WHAT THE SEARCH BAR IS FOR-->
 <!DOCTYPE html>
 <html>
 <head>
 	<title> 205 Final Project </title>
 	<meta charset="utf-8"/>
-	<!-- <h1>Search Twitter Tag</h1> -->
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+	
 </head>
 <body>
 	{% block content %}
 	
-	<style>
+	<style> 
+		
 		body {
 			text-align: center;
+			size: 18 px;
 		}
 		nav {
 			color:	rgb(255, 255, 255);
@@ -28,18 +33,7 @@
 	</style>
 
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #04bbf3; color:#ffffff">
-		<a class="navbar-brand" style="color: #ffffff">Group 1</a>
-		<!--<a class="navbar-brand" href="https://csumb.edu">Home</a>-->
-		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		  <span class="navbar-toggler-icon"></span>
-		</button> -->
-		<div id="navbarNavAltMarkup">
-		  <div class="navbar-nav" style="color:#ffffff; font-size: 18px; padding: 5pt; ">
-			<a class="nav-item nav-link active" href="/index" style="color: #ffffff;">Home <span class="sr-only">(current)</span></a>
-			<a class="nav-item nav-link" href="/graph" style="color: #ffffff; padding-left: 10pt;">Graph</a>
-			<!-- <a class="nav-item nav-link" href="login.php">Log in</a> -->
-		  </div>
-		</div>
+		<a class="navbar-brand" style="color: #ffffff; text-align:center">Twitter Analysis</a>
 	  </nav>
 	  
 	  
@@ -47,7 +41,11 @@
 		<h1> Search Twitter Tag</h1>
 		<h2> CST 205 Final Project </h2>
 	  </div>
-	
+	<a style="font-size:18px"><strong>Please search either a key word or a hashtag 
+			to find out how people have been feeling towards the specific key words or hashtag.</strong></a>
+	<br> <br>
+	<a "font-size:20 px"><strong>MAKE SURE TO ADD A '#' IF YOU ARE GOING TO SEARCH A HASHTAG </strong></a>
+	<br> <br> 
 	<div class ="searchbar" style="text-align: center" action="/graph">
 		<form action="{{ url_for('graphs', search='my_search') }}" method="post">
 		<input type="text" class = "srchBar" name = "twitHash" placeholder = "Enter a Hashtag" value="{{search}}">
@@ -55,32 +53,7 @@
 	</form>
 	</div>
 	<br>
-	<div class = "output">{{pichrt}}</div>
-	<br>
-	<div class = "twitterStuff">{{hist}}</div>
-	
-	
 
-	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-	<script type="text/javascript">
-		/* global $*/
-		var pichrt = '{{pichart}}';
-		var hist = '{{histo}}';
-		$(".click").click(function(){
-			$(".output").html(pichrt);
-			$(".twitterStuff").html(hist);
-		})
-	</script>
-	<!-- <div style = "padding-left: 40px">
-		<h1> Pictures </h1>
-		<a href="/pics/{{image1}}">{{title1}}</a><br>
-		<a href="/pics/{{image1}}">
-			<img src="/static/{{image1}}.jpg" width="200" style = "border-radius: 5px">
-		</a><br/>
-		 -->
-	<!-- </div> -->
-
-	
 	{% endblock %}	
 
 </body>

@@ -10,10 +10,11 @@ search query, calls the twitter search functions and analysis/plotting, and disp
 
 All work on this file by Matthew Connolly
 """
-
+#import George and Connors python files
 import connection2twitter as twit
 import analysis_plot
 
+#import flask
 from flask import Flask, render_template, url_for, request, redirect
 from flask_bootstrap import Bootstrap
 
@@ -25,6 +26,7 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 Bootstrap(app)
 
+#Home page of the flask webpage where the user searches a twitter 
 @app.route('/', methods=['GET','POST'])
 @app.route('/index', methods=['GET','POST'])
 def index():
@@ -33,15 +35,15 @@ def index():
     vader = []
     pichart = ''
     histo = ''
-    if request.method == 'POST':   
-        search = request.form['twitHash']
     return render_template('index.html', search = search)
 
-#possible link to graph?
+#Sends the search to the graph page and displays results about the search
 @app.route('/graph/', methods=['GET','POST'])
 def graphs():
     if request.method=='POST':
         search = request.form['twitHash']
+        if search == '':
+            search = '#whodis'
         result = twit.hashtag(search)
         vader = analysis_plot.vader_analyze(result)
         pichart = vader[0]
