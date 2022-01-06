@@ -11,10 +11,10 @@
 import tweepy
 
 # import twitter
-consumer_key = 'bpTjS9ITJewUuxbZEcIwPnWqP'
-consumer_secret = 'iMrwIcMYKIo3L8aAO3Jfbb6Pq5SntX5iJK9dnzxrjroLtZOGmd'
-acces_token = '1437064778-SMbqdOOK2Et5ftZNeEKecuIWhMS1ceFEsjnfz9P'
-acces_token_secret = 'ca58DLvuT82rlBvzpIkkkgYEEQ8md8IHJSgqbsfQsF5X5'
+consumer_key = ''
+consumer_secret = ''
+acces_token = ''
+acces_token_secret = ''
 
 
 ## Authentication
